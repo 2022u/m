@@ -1,0 +1,4 @@
+def fun(PAandf, PF):
+  PAbyf = PAandf/PF
+  print(PAbyf)
+fun(0.03,0.2)   
