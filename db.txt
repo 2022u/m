@@ -1,0 +1,57 @@
+import mysql.connector  
+myconn = mysql.connector.connect(host = "localhost", user = "root", passwd = "")  
+cur = myconn.cursor()  
+#getting the list of all the databases which will now include the new database PythonDB  
+cur.execute("show databases")  
+for x in cur:  
+        print(x)  
+myconn.close()
+
+
+
+
+import mysql.connector  
+ #Create the connection object   
+myconn = mysql.connector.connect(host = "localhost", user = "root",passwd = "",database = "Pythondb6")  
+ #creating the cursor object  
+cur = myconn.cursor()  
+ #Creating a table with name Employee having four columns i.e., name, id, salary, and department id  
+cur.execute("create table Employee(name varchar(20) not null, id int(20) )")  
+ myconn.close()
+
+
+import mysql.connector  
+#Create the connection object   
+myconn = mysql.connector.connect(host = "localhost", user = "root",passwd = "",database = "Pythondb3")  
+#creating the cursor object  
+cur = myconn.cursor()  
+sql = "insert into Employee(name, id) values (%s, %s)"  
+  
+#The row values are provided in the form of tuple   
+val = ("John", 118)  
+  
+#inserting the values into the table  
+cur.execute(sql,val)  
+  
+#commit the transaction   
+myconn.commit()  
+
+print(cur.rowcount,"record inserted!")  
+myconn.close()  
+
+
+
+
+             Read data from Table(tempbb2.py)
+
+The SELECT statement is used to read the values from the databases.
+import mysql.connector
+myconn = mysql.connector.connect(host="localhost", user="root", passwd="", database="PythonDB13")
+cur = myconn.cursor();
+
+sql = "select * from emp"
+cur.execute(sql)
+result = cur.fetchall()
+for x in result:
+     print(x)
+myconn.close()
